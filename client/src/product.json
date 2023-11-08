@@ -1,0 +1,114 @@
+{
+  "products": [
+    {
+      "product_name": "Adidas Fit Shirt",
+      "numReviews": "2",
+      "star": "3.5",
+      "price": "250",
+      "quantity": "20",
+      "status": "In Stock",
+      "description": "2023 New Style",
+      "imageURL": "./images/p2.jpg"
+    },
+    {
+      "product_name": "Adidas Fit Pant",
+      "numReviews": "10",
+      "star": "4.5",
+      "price": "65",
+      "quantity": "20",
+      "status": "In Stock",
+      "description": "2023 New Style",
+      "imageURL": "./images/p4.jpg"
+    },
+    {
+      "product_name": "Nike Slim Shirt",
+      "numReviews": "10",
+      "star": "4.5",
+      "price": "120",
+      "quantity": "20",
+      "status": "In Stock",
+      "description": "2023 New Style",
+      "imageURL": "./images/p1.jpg"
+    },
+    {
+      "product_name": "Nike Slim Pant",
+      "numReviews": "1",
+      "star": "5",
+      "price": "25",
+      "quantity": "20",
+      "status": "In Stock",
+      "description": "2023 New Style",
+      "imageURL": "./images/p3.jpg"
+    },
+    {
+      "product_name": "light purple shirt",
+      "numReviews": "1",
+      "star": "0",
+      "price": "30",
+      "quantity": "0",
+      "status": "Unavailable",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/p1.jpg"
+    },
+    {
+      "product_name": "dress 1",
+      "numReviews": "2",
+      "star": "0.5",
+      "price": "35",
+      "quantity": "0",
+      "status": "Unavailable",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/dress1.jpg"
+    },
+    {
+      "product_name": "dress 2",
+      "numReviews": "3",
+      "star": "1.5",
+      "price": "40",
+      "quantity": "0",
+      "status": "Unavailable",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/dress2.jpg"
+    },
+    {
+      "product_name": "dress3",
+      "numReviews": "4",
+      "star": "2",
+      "price": "45",
+      "quantity": "0",
+      "status": "In Stock",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/dress3.jpg"
+    },
+    {
+      "product_name": "dress4",
+      "numReviews": "5",
+      "star": "2.5",
+      "price": "50",
+      "quantity": "5",
+      "status": "In Stock",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/dress4.jpg"
+    },
+    {
+      "product_name": "dress5",
+      "numReviews": "6",
+      "star": "3",
+      "price": "55",
+      "quantity": "1",
+      "status": "In Stock",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/dress5.jpg"
+    },
+    {
+      "product_name": "light blue dress",
+      "numReviews": "7",
+      "star": "3.5",
+      "price": "60",
+      "quantity": "10",
+      "status": "In Stock",
+      "description": "2022 Classic Style",
+      "imageURL": "./images/dress6.jpg"
+    }
+  ]
+}

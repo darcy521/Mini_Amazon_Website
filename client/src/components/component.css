@@ -1,0 +1,36 @@
+.navbar {
+    width: 100%;
+    /* background-color: blueviolet !important; */
+}
+
+.nav {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.header-container {
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.header-right-container {
+    min-width: 30%;
+    display: flex;
+    justify-content: right;
+}
+
+.card-container {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+/* rating */
+.star {
+    color: rgb(250,176,7);
+}
+
+
+/* footer */
+.footer-container {
+    min-height: 10vh;
+}
