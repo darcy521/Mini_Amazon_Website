@@ -7,6 +7,7 @@ import './component.css';
 import Product_Json from '../product.json';
 import Container from 'react-bootstrap/Container';
 import Rating from './Rating';
+import Category from './Category';
 // import { Link } from 'react-router-dom';
 
 
@@ -17,16 +18,17 @@ export default function Product() {
   return (
     <>
       <Container fluid className='card-container'>
+        <Category />
         <Row>
             {products.map((product) => (
                 <Col sm={6} md={4} lg={3} className='mb-3'>
                 <Card style={{ width: '18rem' }}>
-                <Card.Link style={{cursor:'pointer'}} href={`/product/${product.product_name}`}>
+                <Card.Link style={{cursor:'pointer'}} href={`/product/${product.product_id}`}>
                   <Card.Img variant="top" src={ product.imageURL }/>
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link style={{cursor:'pointer'}} href={`/product/${product.product_name}`}>{ product.product_name }</Card.Link>
+                        <Card.Link style={{cursor:'pointer'}} href={`/product/${product.product_id}`}>{ product.product_name }</Card.Link>
                     </Card.Title>
                     <Card.Text>{ product.description }</Card.Text>
                     <Rating rating={product.star} numReviews={product.numReviews}/>

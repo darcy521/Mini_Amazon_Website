@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "product_id": "1",
       "product_name": "Adidas Fit Shirt",
       "numReviews": "2",
       "star": "3.5",
@@ -11,6 +12,7 @@
       "imageURL": "./images/p2.jpg"
     },
     {
+      "product_id": "2",
       "product_name": "Adidas Fit Pant",
       "numReviews": "10",
       "star": "4.5",
@@ -21,6 +23,7 @@
       "imageURL": "./images/p4.jpg"
     },
     {
+      "product_id": "3",
       "product_name": "Nike Slim Shirt",
       "numReviews": "10",
       "star": "4.5",
@@ -31,6 +34,7 @@
       "imageURL": "./images/p1.jpg"
     },
     {
+      "product_id": "4",
       "product_name": "Nike Slim Pant",
       "numReviews": "1",
       "star": "5",
@@ -41,6 +45,7 @@
       "imageURL": "./images/p3.jpg"
     },
     {
+      "product_id": "5",
       "product_name": "light purple shirt",
       "numReviews": "1",
       "star": "0",
@@ -51,6 +56,7 @@
       "imageURL": "./images/p1.jpg"
     },
     {
+      "product_id": "6",
       "product_name": "dress 1",
       "numReviews": "2",
       "star": "0.5",
@@ -61,6 +67,7 @@
       "imageURL": "./images/dress1.jpg"
     },
     {
+      "product_id": "7",
       "product_name": "dress 2",
       "numReviews": "3",
       "star": "1.5",
@@ -71,6 +78,7 @@
       "imageURL": "./images/dress2.jpg"
     },
     {
+      "product_id": "8",
       "product_name": "dress3",
       "numReviews": "4",
       "star": "2",
@@ -81,6 +89,7 @@
       "imageURL": "./images/dress3.jpg"
     },
     {
+      "product_id": "9",
       "product_name": "dress4",
       "numReviews": "5",
       "star": "2.5",
@@ -91,6 +100,7 @@
       "imageURL": "./images/dress4.jpg"
     },
     {
+      "product_id": "10",
       "product_name": "dress5",
       "numReviews": "6",
       "star": "3",
@@ -101,6 +111,7 @@
       "imageURL": "./images/dress5.jpg"
     },
     {
+      "product_id": "11",
       "product_name": "light blue dress",
       "numReviews": "7",
       "star": "3.5",
