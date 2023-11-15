@@ -23,12 +23,12 @@ export default function Product() {
             {products.map((product) => (
                 <Col sm={6} md={4} lg={3} className='mb-3'>
                 <Card style={{ width: '18rem' }}>
-                <Card.Link style={{cursor:'pointer'}} href={`/product/${product.product_id}`}>
+                <Card.Link style={{cursor:'pointer'}} href={`/productdetail/${product.product_id}`}>
                   <Card.Img variant="top" src={ product.imageURL }/>
                 </Card.Link>
                 <Card.Body>
                     <Card.Title>
-                        <Card.Link style={{cursor:'pointer'}} href={`/product/${product.product_id}`}>{ product.product_name }</Card.Link>
+                        <Card.Link style={{cursor:'pointer'}} href={`/productdetail/${product.product_id}`}>{ product.product_name }</Card.Link>
                     </Card.Title>
                     <Card.Text>{ product.description }</Card.Text>
                     <Rating rating={product.star} numReviews={product.numReviews}/>

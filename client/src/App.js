@@ -6,9 +6,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-import home from './pages/home';
-import signIn from './pages/signIn';
-import productDetail from './pages/productDetail';
+import Home from './pages/home';
+import SignIn from './pages/signIn';
+import ProductDetail from './pages/productDetail';
 
 library.add(fas, faTwitter, faFontAwesome, fab); 
 
@@ -25,9 +25,9 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' Component={ home } />
-          <Route path='/signin' Component={ signIn } />
-          <Route path='./productdetail/:id' Component={ productDetail } />
+          <Route path='/' element={<Home />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/productdetail/:id' element={<ProductDetail />} />
         </Routes>
       </BrowserRouter>
     </>
