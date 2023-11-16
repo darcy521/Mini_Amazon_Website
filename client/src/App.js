@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import CreateAccount from './pages/CreateAccount';
 import ForgetPassword from './pages/ForgetPassword';
+import Cart from './components/Cart';
 
 library.add(fas, faTwitter, faFontAwesome, fab); 
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/productdetail/:id' element={<ProductDetail />} />
           <Route path='/createaccount' element={<CreateAccount />} />
           <Route path='/forgetpassword' element={<ForgetPassword />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </BrowserRouter>
       <Footer />
