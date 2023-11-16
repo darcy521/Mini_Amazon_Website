@@ -2,3 +2,41 @@
     text-align: center;
     min-height: 100vh;
 }
+
+.signin-container, .createaccount-container, .forgetpassword-container {
+    height: 100vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin-button-container, .forgetpassword-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forget-password-link {
+    font-size: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.check-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 800px){
+    .signin-form, .createaccount-form, .forgetpassword-form {
+        width: 40rem;
+    }
+
+    .signin-button, .signup-button, .forgetpassword-button {
+        width: 10rem;
+    }
+}
