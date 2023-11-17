@@ -1,6 +1,9 @@
-.home-container {
+.body-container {
     text-align: center;
+    justify-content: center;
     min-height: 100vh;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .signin-container, .createaccount-container, .forgetpassword-container {

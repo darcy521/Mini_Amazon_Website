@@ -4,11 +4,11 @@ import './pages.css';
 
 export default function Home() {
   return (
-    <div className="home-container">
+    <div className="body-container">
         {/* <div className="app-body">
           <p>{!data? "Loading..." : data}</p>
         </div> */}
         <Product />
-      </div>
+    </div>
   )
 }

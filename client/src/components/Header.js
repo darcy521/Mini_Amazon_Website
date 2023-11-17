@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function Header(props) {
   const userInfo = props;
-  console.log("userinfo", props.name);
+  // console.log("userinfo", props.name);
 
   const signoutHandler = () => {
     // localStorage.removeItem();

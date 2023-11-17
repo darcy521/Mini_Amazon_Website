@@ -7,7 +7,6 @@ import Product_Json from '../product.json';
 import Container from 'react-bootstrap/Container';
 import Rating from './Rating';
 import Category from './Category';
-// import { Link } from 'react-router-dom';
 
 
 export default function Product() {
