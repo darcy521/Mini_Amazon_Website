@@ -8,7 +8,7 @@ const Product = require("../models/productModel");
 // starting with path /record
 const productRoutes = express.Router();
 
-// This will help us connect to the database 
+// This will help us connect to the database
 const dbo = require("../db/conn");
 
 // This help convert the id from string to ObjectId for the _id.
@@ -61,7 +61,7 @@ productRoutes.post(
     // console.log("product: ", product);
     db_connect.collection("test").insertOne(newProduct)
     .then((result) => {
-        result.acknowledged ? 
+        result.acknowledged ?
           res.send({ message: 'Product created!', newProduct })
           && console.log("Product created!")
           :
