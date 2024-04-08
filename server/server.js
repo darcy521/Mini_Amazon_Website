@@ -1,26 +1,34 @@
 const express = require("express");
 const { spawn } = require('child_process');
+const mongoose = require('mongoose');
+const productRouter = require('./routes/productRoutes')
 
 const app = express();
-const cors = require("cors");
-require("dotenv").config({ path: "./config.env" });
 const PORT = process.env.PORT || 3001;
-app.use(cors());
+
+// encrypt mongoDB URI
+require("dotenv").config({ path: "./config.env" });
+
+// const cors = require("cors");
+// app.use(cors());
+
+
+// middleware to parse JSON bodies
 app.use(express.json());
-// app.use(require("./routes/productRoutes"));
+app.use("/product", productRouter);
+
+// connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+  .then((res) => {
+    console.log('Connected to MongoDB...');
+    // console.log(res);
+  })
+  .catch(err => console.error('Could not connect to MongoBD...', err));
 
 // connect to driver
-const dbo = require("./db/conn");
-app.listen(PORT, () => {
-  // dbo.connectToServer(function (err) {
-  //   if (err) {
-  //     console.error(err);
-  //   }
-  // })
-  console.log(`Server listening on ${PORT}`);
-});
+// const dbo = require("./db/conn");
 
-// define a POST Route
+// define a POST Route and test python data-flow
 app.post('/run-python', (req, res) => {
   const dataFromFrontend = req.body.message;
   const pythonProcess = spawn('python3', ['script.py', dataFromFrontend]);
@@ -38,6 +46,11 @@ app.post('/run-python', (req, res) => {
     });
   })
 })
+
+// start the server
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});
 
 
 
