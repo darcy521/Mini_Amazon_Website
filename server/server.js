@@ -3,6 +3,7 @@ const { spawn } = require("child_process");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,6 +19,9 @@ app.use("/product", productRoutes);
 
 // create CRUD endpoints for user
 app.use("/user", userRoutes);
+
+// create CRUD endpoints for cart
+app.use("/cart", cartRoutes);
 
 // connect to MongoDB
 mongoose
