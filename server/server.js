@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const loginRoutes = require("./routes/loginRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,6 +14,10 @@ require("dotenv").config({ path: "./config.env" });
 
 // middleware to parse JSON bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// authentication check
+app.use("/", loginRoutes);
 
 // create CRUD endpoints for product
 app.use("/product", productRoutes);
