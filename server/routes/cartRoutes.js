@@ -1,5 +1,6 @@
 const express = require("express");
 const Cart = require("../models/cart");
+const checkRole = require("./checkRole");
 let area = "Cart";
 
 // router is an instance of the express router.
@@ -8,7 +9,7 @@ let area = "Cart";
 const router = express.Router();
 
 // API - GET get all carts information
-router.get("/", async (req, res) => {
+router.get("/", checkRole(["manager"]), async (req, res) => {
   try {
     let cart = await Cart.find({});
 
@@ -16,7 +17,7 @@ router.get("/", async (req, res) => {
       return res.status(404).send({ message: `No ${area} found` });
     }
 
-    console.log(`${area} GET API Result: Succeed to get ${area}`, );
+    console.log(`${area} GET API Result: Succeed to get ${area}`);
     res.status(200).send({ message: `Succeed to get ${area}`, data: cart });
   } catch (err) {
     console.log(`${area} GET API Error: `, err.message);
@@ -25,27 +26,26 @@ router.get("/", async (req, res) => {
 });
 
 // API - GET get cart information from user id
-router.get("/:id", async (req, res) => {
-    try {
-      let cart = await Cart.findById(req.params.id);
+router.get("/:id", checkRole(["customer"]), async (req, res) => {
+  try {
+    let cart = await Cart.findById(req.params.id);
 
-      if (!cart) {
-        return res.status(404).send({ message: `No ${area} found` });
-      }
-
-      console.log(`${area} GET API Result: Succeed to get ${area}`, );
-      res.status(200).send({ message: `Succeed to get ${area}`, data: cart });
-    } catch (err) {
-      console.log(`${area} GET API Error: `, err.message);
-      res.status(500).send({ message: `Error get ${area}`, error: err });
+    if (!cart) {
+      return res.status(404).send({ message: `No ${area} found` });
     }
-  });
+
+    console.log(`${area} GET API Result: Succeed to get ${area}`);
+    res.status(200).send({ message: `Succeed to get ${area}`, data: cart });
+  } catch (err) {
+    console.log(`${area} GET API Error: `, err.message);
+    res.status(500).send({ message: `Error get ${area}`, error: err });
+  }
+});
 
 // API - POST create a new cart for user by id
 router.post(
   "/create",
-  // isAuth,
-  // isAdmin,
+  checkRole(["customer"]),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
@@ -56,7 +56,9 @@ router.post(
     try {
       cart = await cart.save();
       console.log(`${area} CREATE API Result: `, cart);
-      res.status(200).send({ message: `Succeed to create ${area}`, data: cart });
+      res
+        .status(200)
+        .send({ message: `Succeed to create ${area}`, data: cart });
     } catch (err) {
       console.log(`${area} GET API Error: `, err.message);
       res.status(500).send({ message: `Error create ${area}`, error: err });
@@ -67,8 +69,7 @@ router.post(
 // API - PUT update existing cart information
 router.put(
   "/update/:id",
-  // isAuth,
-  // isAdmin,
+  checkRole(["customer"]),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
@@ -83,11 +84,13 @@ router.put(
       });
 
       if (!cart) {
-        return res.status(404).send({ message: 'No cart found' });
+        return res.status(404).send({ message: "No cart found" });
       }
 
       console.log(`${area} UPDATE API Result: `, cart);
-      res.status(200).send({ message: `Succeed to update ${area}`, data: cart });
+      res
+        .status(200)
+        .send({ message: `Succeed to update ${area}`, data: cart });
     } catch (err) {
       console.log(`${area} UPDATE API Error: `, err.message);
       res.status(500).send({ message: `Error update ${area}`, error: err });
@@ -98,8 +101,7 @@ router.put(
 // API - DELETE delete cart by id
 router.delete(
   "/deleteCart/:id",
-  // isAuth,
-  // isAdmin,
+  checkRole(["customer"]),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
@@ -109,11 +111,15 @@ router.delete(
       let cart = await Cart.findByIdAndDelete(id);
 
       if (!cart) {
-        return res.status(404).send({ message: 'No cart found or already deleted' });
+        return res
+          .status(404)
+          .send({ message: "No cart found or already deleted" });
       }
 
       console.log(`${area} DELETE API Result: Product deleted successfully`);
-      res.status(200).send({ message: `Succeed to delete ${area}`, data: cart });
+      res
+        .status(200)
+        .send({ message: `Succeed to delete ${area}`, data: cart });
     } catch (err) {
       console.log(`${area} DELETE API Error: `, err.message);
       res.status(500).send({ message: `Error delete ${area}`, error: err });
@@ -123,28 +129,31 @@ router.delete(
 
 // API - DELETE delete cart item by cart id and item id
 router.delete(
-    "/deleteCartItem/:id/:itemId",
-    // isAuth,
-    // isAdmin,
-    async (req, res) => {
-      let time = Date.now();
-      req.body.time = time;
-      const { id, itemId } = req.params;
+  "/deleteCartItem/:id/:itemId",
+  checkRole(["customer"]),
+  async (req, res) => {
+    let time = Date.now();
+    req.body.time = time;
+    const { id, itemId } = req.params;
 
-      try {
-        let cart = await Cart.findById(id).findByIdAndDelete(itemId);
+    try {
+      let cart = await Cart.findById(id).findByIdAndDelete(itemId);
 
-        if (!cart) {
-          return res.status(404).send({ message: 'No cart found or already deleted' });
-        }
-
-        console.log(`${area} DELETE API Result: Product deleted successfully`);
-        res.status(200).send({ message: `Succeed to delete ${area}`, data: cart });
-      } catch (err) {
-        console.log(`${area} DELETE API Error: `, err.message);
-        res.status(500).send({ message: `Error delete ${area}`, error: err });
+      if (!cart) {
+        return res
+          .status(404)
+          .send({ message: "No cart found or already deleted" });
       }
+
+      console.log(`${area} DELETE API Result: Product deleted successfully`);
+      res
+        .status(200)
+        .send({ message: `Succeed to delete ${area}`, data: cart });
+    } catch (err) {
+      console.log(`${area} DELETE API Error: `, err.message);
+      res.status(500).send({ message: `Error delete ${area}`, error: err });
     }
-  );
+  }
+);
 
 module.exports = router;

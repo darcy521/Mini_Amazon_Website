@@ -1,5 +1,6 @@
 const express = require("express");
 const Product = require("../models/product");
+const checkRole = require("./checkRole");
 let area = "Product";
 
 // router is an instance of the express router.
@@ -27,8 +28,7 @@ router.get("/", async (req, res) => {
 // API - POST create new product
 router.post(
   "/create",
-  // isAuth,
-  // isAdmin,
+  checkRole(['manager', 'seller']),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
@@ -50,8 +50,7 @@ router.post(
 // API - PUT update existing product information
 router.put(
   "/update/:id",
-  // isAuth,
-  // isAdmin,
+  checkRole(['manager', 'seller']),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
@@ -81,8 +80,7 @@ router.put(
 // API - DELETE delete existing product information
 router.delete(
   "/delete/:id",
-  // isAuth,
-  // isAdmin,
+  checkRole(['manager', 'seller']),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;

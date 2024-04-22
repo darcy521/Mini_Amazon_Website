@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/user");
+const checkRole = require("./checkRole");
 let area = "User";
 
 // router is an instance of the express router.
@@ -27,11 +28,7 @@ router.get("/", async (req, res) => {
 // API - POST create new user
 router.post(
   "/create",
-  // isAuth,
-  // isAdmin,
   async (req, res) => {
-    let time = Date.now();
-    req.body.time = time;
     // console.log('req.body: ', req.body);
     let user = new User(req.body);
 
@@ -50,8 +47,7 @@ router.post(
 // API - PUT update existing user information
 router.put(
   "/update/:id",
-  // isAuth,
-  // isAdmin,
+  checkRole(["customer", "seller", "manager"]),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
@@ -81,8 +77,7 @@ router.put(
 // API - DELETE delete existing user information
 router.delete(
   "/delete/:id",
-  // isAuth,
-  // isAdmin,
+  checkRole(["customer", "seller", "manager"]),
   async (req, res) => {
     let time = Date.now();
     req.body.time = time;
