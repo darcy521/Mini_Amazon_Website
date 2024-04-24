@@ -15,17 +15,9 @@ import CreateAccount from './pages/CreateAccount';
 import ForgetPassword from './pages/ForgetPassword';
 import Cart from './components/Cart';
 
-library.add(fas, faTwitter, faFontAwesome, fab); 
+library.add(fas, faTwitter, faFontAwesome, fab);
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-  // React.useEffect(() => {
-  //   fetch('/api')
-  //   .then((res) => res.json())
-  //   .then((data) => setData(data.message));
-  // }, []);
-  
   return (
     <>
       <Header />

@@ -50,6 +50,6 @@ export default function Header(props) {
           </Nav>
         </Navbar.Collapse>
         </Container>
-    </Navbar> 
+    </Navbar>
   )
 }

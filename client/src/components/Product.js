@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import './component.css';
-import Product_Json from '../product.json';
 import Container from 'react-bootstrap/Container';
 import Rating from './Rating';
 import Category from './Category';
 
 
 export default function Product() {
-  const [products, setProducts] = React.useState(Product_Json.products);
+  const [products, setProducts] = React.useState([]);
 
+  useEffect(() => {
+    // get product information
+    fetch('http://localhost:3001/product')
+    .then(response => {
+      return response.json();
+    })
+    .then(products => {
+      console.log('Products Data: ', products);
+      setProducts(products.data);
+    });
+  }, []);
 
   return (
     <>
@@ -19,7 +29,7 @@ export default function Product() {
         <Category />
         <Row>
             {products.map((product) => (
-                <Col sm={6} md={4} lg={3} className='mb-3'>
+                <Col sm={6} md={4} lg={3} className='mb-3' key={products._id}>
                 <Card style={{ width: '18rem' }}>
                 <Card.Link style={{cursor:'pointer'}} href={`/productdetail/${product.product_id}`}>
                   <Card.Img variant="top" src={ product.imageURL }/>
@@ -34,7 +44,7 @@ export default function Product() {
                     <Card.Text>${ product.price }</Card.Text>
                 </Card.Body>
                 {/* <Card.Body>
-                    {product.quantity > 0 ? 
+                    {product.quantity > 0 ?
                     <Button href="#" variant='warning'>Add to Cart</Button>
                     :
                     <Button disabled variant='light'>Out of Stock</Button>

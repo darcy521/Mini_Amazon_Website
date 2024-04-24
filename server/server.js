@@ -1,6 +1,7 @@
 const express = require("express");
 const { spawn } = require("child_process");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const cartRoutes = require("./routes/cartRoutes");
@@ -11,6 +12,9 @@ const PORT = process.env.PORT || 3001;
 
 // encrypt mongoDB URI
 require("dotenv").config({ path: "./config.env" });
+
+// enable CORS
+app.use(cors());
 
 // middleware to parse JSON bodies
 app.use(express.json());

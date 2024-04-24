@@ -8,7 +8,7 @@ let area = "Cart";
 // The router will be added as a middleware and will take control of requests
 const router = express.Router();
 
-// API - GET get all carts information
+// API - GET get all carts information - /cart/
 router.get("/", checkRole(["manager"]), async (req, res) => {
   try {
     let cart = await Cart.find({});
@@ -25,7 +25,7 @@ router.get("/", checkRole(["manager"]), async (req, res) => {
   }
 });
 
-// API - GET get cart information from user id
+// API - GET get cart information from user id - /cart/:id
 router.get("/:id", checkRole(["customer"]), async (req, res) => {
   try {
     let cart = await Cart.findById(req.params.id);
@@ -42,7 +42,7 @@ router.get("/:id", checkRole(["customer"]), async (req, res) => {
   }
 });
 
-// API - POST create a new cart for user by id
+// API - POST create a new cart for user by id - /cart/create
 router.post(
   "/create",
   checkRole(["customer"]),
@@ -66,7 +66,7 @@ router.post(
   }
 );
 
-// API - PUT update existing cart information
+// API - PUT update existing cart information - /cart/update/:id
 router.put(
   "/update/:id",
   checkRole(["customer"]),
@@ -98,7 +98,7 @@ router.put(
   }
 );
 
-// API - DELETE delete cart by id
+// API - DELETE delete cart by id - /cart/deleteCart/:id
 router.delete(
   "/deleteCart/:id",
   checkRole(["customer"]),
@@ -127,7 +127,7 @@ router.delete(
   }
 );
 
-// API - DELETE delete cart item by cart id and item id
+// API - DELETE delete cart item by cart id and item id - /cart/deleteCartItem/:id/:itemId
 router.delete(
   "/deleteCartItem/:id/:itemId",
   checkRole(["customer"]),

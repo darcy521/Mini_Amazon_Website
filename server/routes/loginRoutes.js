@@ -28,7 +28,7 @@ router.use(session({
     })
 }));
 
-// check user status, default API to home page
+// check user status, default API to home page - /
 router.get('/', (req, res) => {
     if (req.session.login) {
         res.send(req.session.username + ", welcome to Mini Amazon!" + req.sessionID);
@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
     }
 })
 
-// API - POST login existing user
+// API - POST login existing user - /login
 router.post('/login', async(req, res) => {
     const { username, password } = req.body;
     try {
@@ -62,7 +62,7 @@ router.post('/login', async(req, res) => {
 })
 
 
-// API - GET logout current user
+// API - GET logout current user - /logout
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {

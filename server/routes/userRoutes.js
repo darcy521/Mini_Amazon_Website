@@ -8,7 +8,7 @@ let area = "User";
 // The router will be added as a middleware and will take control of requests
 const router = express.Router();
 
-// API - GET get user information
+// API - GET get user information - /user/
 router.get("/", async (req, res) => {
   try {
     let user = await User.find({});
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// API - POST create new user
+// API - POST create new user - /user/create
 router.post(
   "/create",
   async (req, res) => {
@@ -44,7 +44,7 @@ router.post(
   }
 );
 
-// API - PUT update existing user information
+// API - PUT update existing user information - /user/update/:id
 router.put(
   "/update/:id",
   checkRole(["customer", "seller", "manager"]),
@@ -74,7 +74,7 @@ router.put(
   }
 );
 
-// API - DELETE delete existing user information
+// API - DELETE delete existing user information - /user/delete/:id
 router.delete(
   "/delete/:id",
   checkRole(["customer", "seller", "manager"]),

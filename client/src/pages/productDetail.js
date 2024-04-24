@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Loading from '../components/Loading';
 import Message from '../components/Message';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -13,10 +13,8 @@ import Badge from 'react-bootstrap/Badge';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
-import Product_Json from '../product.json';
-
 export default function ProductDetail() {
-  
+
   const [selectedImage, setSelectedImage] = useState('');
   const [product, setProduct] = useState([]);
   const [rating, setRating] = useState(0);
@@ -30,7 +28,7 @@ export default function ProductDetail() {
   }
 
   // const params = useParams();
-  // const { slug } = params; 
+  // const { slug } = params;
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -55,12 +53,12 @@ export default function ProductDetail() {
 
 
   return (
-      status.loading ? 
+      status.loading ?
       (
         <Loading />
       ) : status.error ? (
       <Message variant="danger">{ status.error }</Message>
-      ) : 
+      ) :
     <>
       <div className='product-detail-container'>
         {/* left picture */}
@@ -200,7 +198,7 @@ export default function ProductDetail() {
             ) : (
               <Message>
                 Please{''}
-                <Link to={'/signin?redirect=/product/${product.id}'}>
+                <Link to={`/signin?redirect=/product/${product.id}`}>
                   Sign In
                 </Link>
                 to write a review

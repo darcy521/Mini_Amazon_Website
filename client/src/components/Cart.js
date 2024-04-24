@@ -6,10 +6,9 @@ import { faSquareMinus, faSquarePlus, faTrashCan } from '@fortawesome/free-regul
 import Button from 'react-bootstrap/Button';
 import './component.css';
 import Message from './Message';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 import Card from 'react-bootstrap/Card';
-import axios from 'axios';
 
 export default function Cart() {
   //   const navigate = useNavigate();

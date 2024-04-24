@@ -8,7 +8,7 @@ let area = "Product";
 // The router will be added as a middleware and will take control of requests
 const router = express.Router();
 
-// API - GET get product information
+// API - GET get product information - /product/
 router.get("/", async (req, res) => {
   try {
     let product = await Product.find({});
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// API - POST create new product
+// API - POST create new product - /product/create
 router.post(
   "/create",
   checkRole(['manager', 'seller']),
@@ -47,7 +47,7 @@ router.post(
   }
 );
 
-// API - PUT update existing product information
+// API - PUT update existing product information - /product/update/:id
 router.put(
   "/update/:id",
   checkRole(['manager', 'seller']),
@@ -77,7 +77,7 @@ router.put(
   }
 );
 
-// API - DELETE delete existing product information
+// API - DELETE delete existing product information - /product/delete/:id
 router.delete(
   "/delete/:id",
   checkRole(['manager', 'seller']),

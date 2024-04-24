@@ -4,6 +4,7 @@ import './pages.css';
 import CallPython from '../components/CallPython';
 
 export default function Home() {
+
   return (
     <div className="body-container">
         {/* <div className="app-body">
