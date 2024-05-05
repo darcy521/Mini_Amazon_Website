@@ -14,7 +14,14 @@ const PORT = process.env.PORT || 3001;
 require("dotenv").config({ path: "./config.env" });
 
 // enable CORS
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000', // Specify the origin of your frontend application
+  credentials: true // Allow credentials
+}
+
+app.use(cors(corsOptions));
+
+// app.set('trust proxy', true); // trust proxy
 
 // middleware to parse JSON bodies
 app.use(express.json());

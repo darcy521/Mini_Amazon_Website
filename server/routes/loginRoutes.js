@@ -5,8 +5,11 @@ const MongoStore = require('connect-mongo');
 require('dotenv').config({ path: "./config.env" });
 const bcrypt = require('bcryptjs');
 
-const MONGODB_URI = process.env.MONGODB_URI;
 const User = require('../models/user');
+const { default: mongoose } = require('mongoose');
+
+const MONGODB_URI = process.env.MONGODB_URI;
+
 
 const router = express.Router();
 router.use(cookieParser());
@@ -15,17 +18,18 @@ router.use(session({
     secret: 'darcy0421',  // 用于加密cookie的密钥
     resave: false,              // 不重新保存session，除非被修改
     saveUninitialized: false,   // 不保存未初始化的session
-    name: 'session_id',
+    name: 'cake',
     cookie: {
         maxAge: 1000 * 60 * 30,    // 0.5 hour
-        httpOnly: true,                 // 防止客户端脚本注入访问cookies
-        secure: false                   // 当前通过http可以访问，如果为true则需要https
+        secure: true, // 当前通过http可以访问, 如果为true则需要https
+        sameSite: 'none',
+        httpOnly: true,  // 防止客户端脚本注入访问cookies
     },
     store: MongoStore.create({
         mongoUrl: MONGODB_URI,   // Database url
-        collectionName: 'sessions',           // link to collection 'sessions' from mongodb
+        collectionName: 'sessions',   // link to collection 'sessions' from mongodb
         ttl: 60 * 30             // 数据库存储session的存活时间， 0.5 hour
-    })
+    }),
 }));
 
 // check user status, default API to home page - /
@@ -63,13 +67,16 @@ router.post('/login', async(req, res) => {
 
 
 // API - GET logout current user - /logout
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
+    console.log('req.session: ', req.session);
     req.session.destroy(err => {
         if (err) {
-            return res.send("Error in destroying session");
+            console.log(`Logout API Result: Error in destroying session`);
+            return res.status(500).send({ message: "Error in destroying session", error: err.message });
         }
-        // res.redirect('/');
-        res.send("Session destroyed and logged out");
+        res.clearCookie('cookie');
+        console.log(`Logout API Result: Session destroyed and logged out`);
+        res.status(200).send({ message: "Session destroyed and logged out" });
     })
 })
 
